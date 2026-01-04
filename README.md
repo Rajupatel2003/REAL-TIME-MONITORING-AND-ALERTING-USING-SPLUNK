@@ -30,3 +30,38 @@ The goal of this project is to provide a "Single Pane of Glass" for monitoring s
 ├── queries/                # A collection of useful SPL and SQL queries used
 ├── logs/                   # Sample log data used for ingestion
 └── README.md
+
+---
+
+## 🚀 How It Works
+**Data Ingestion:** Log data from web servers and SQL databases is forwarded to Splunk.
+**Analysis:** SPL queries monitor for specific patterns (e.g., error_code > 400 or unauthorized_access).
+**Visualization:** Data is mapped onto a real-time dashboard for immediate oversight.
+**Action:** When a threshold is met, a Python script executes to notify the administrator or log the event for further audit.
+
+---
+
+## 📈 Sample SPL Query (The "SQL" Connection)
+I applied my SQL background to write efficient Search Processing Language:
+
+**Splunk SPL**
+
+index=main sourcetype="access_combined" status=404 
+| stats count by clientip 
+| where count > 10 
+| sort - count
+(This query identifies potential brute-force or scanning activity by counting frequent 404 errors per IP.)
+
+---
+
+## 🎯 Learning Outcomes
+Mastered the ingestion of unstructured data into a structured monitoring environment.
+Bridge the gap between SQL data management and Real-time log analysis.
+Developed backend Python logic to handle external API triggers from Splunk alerts.
+
+---
+
+## 👨‍💻 Connect with Me
+**LinkedIn:** [www.linkedin.com/in/raju-gandla-7ab41824a]
+
+**Email:** [21d41a6226@gmail.com]
